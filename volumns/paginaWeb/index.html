@@ -34,9 +34,9 @@
                  <!-- FIcar codi per ficar targetes de cines -->
                 <caption>Cinema</caption>
                 <thead> <tr id="nomCine"></tr> </thead>
-                <tbody> <tr id="fotoCines"> </tr> </tbody>
+                <!-- <tbody> <tr id="fotoCines"> </tr> </tbody> -->
             </table>
-            
+            <div id = "Cartellera"> </div>
         </section>
     </main>
     <!-- ---------------------------------------------------------------------------------------------------------------------- -->
@@ -64,11 +64,14 @@
             let nomCine = document.getElementById("nomCine")
             let fotoCine = document.getElementById("fotoCines")
             for (let i = 0; i < cines.length; i++) {
-               nomCine.innerHTML+=`<th>${cines[i].nom}</th>` 
-               fotoCine.innerHTML+=`<td> 
-                                    <img class="fCines" onclick="Cartellera(${cines[i].idCine})"  src="${cines[i].fotografia}" alt="cine"${i}>
-                                    </td>`
-            }
+               nomCine.innerHTML+=`<th>
+                <div>${cines[i].nom}</div>
+                <img class="fCines" onclick="Cartellera(${cines[i].idCine})"  src="${cines[i].fotografia}" alt="cine"${i}> 
+                </th>` 
+            //    fotoCine.innerHTML+=`<td> 
+                                   
+            //                         </td>`
+             }
         }
         // Cartellera Cine
         function Cartellera(numCine){
@@ -80,8 +83,17 @@
                         pr.idMultimedia= m.idMultimedia AND 
                         m.prioritat = 0 AND s.idCine = ${numCine}` 
             console.log(host+query)
+            fetch (host+query)
+                .then( response => response.json() )
+                .then( cartell => crearCartellera( cartell.data ) )
         }
-
+        function crearCartellera( cartell ){
+            let cartellera = document.getElementById("Cartellera")
+            cartellera.innerHTML = "";
+            for (let i = 0; i < cartell.length; i++) {
+               cartellera.innerHTML+=`<div class="cartell"> <img src="${cartell[i].link}" alt="cartell"${i}> </div>` 
+            }
+        }
 
 
         // Ranking pelis
