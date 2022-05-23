@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/grid.css">
+    <link rel="stylesheet" href="/styles/box.css">
+    <link rel="stylesheet" href="/styles/flex.css">
+    <link rel="stylesheet" href="/styles/tCines.css">
+    <title>Document</title>
+</head>
+<body class="pagina">
+    <header class="cap">
+        <div class="capMenu ">
+            <!-- Posar imatge online -->
+            <img src="img/logo.jpg" alt="logo" class="logo">   
+            <nav class="menuNav">
+                <ul >
+                    <li> <a href="formulari.html">Incluir cine</a></li>
+                    <li> <a href="">hola2</a></li>
+                    <li> <a href="">hola3</a></li>
+                    <li> <a href="">hola4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+    <main class="principal">
+        <h1> Cines i pelicules </h1>
+        <section class="cines">
+           
+            <table class="tCines">
+                 <!-- FIcar codi per ficar targetes de cines -->
+                <caption>Cinema</caption>
+                <thead> <tr id="nomCine"></tr> </thead>
+                <tbody> <tr id="fotoCines"> </tr> </tbody>
+            </table>
+            
+        </section>
+    </main>
+    <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+    <aside class="secundari">
+       <h1>Top pel·licules</h1>
+        <ol id="ranking"> </ol>
+    </aside>
+    <!-- ---------------------------------------------------------------------------------------------------------------------- -->
+
+    <footer class="peu">    
+        es un peu de pagina
+        
+    </footer>
+
+    <script>
+        // Taula cine
+        let host= `http://localhost:3000/daw/ `
+        function tCines(){
+            let query = `select idCine,nom,fotografia from Cine `
+            fetch( host+query )
+                .then(response => response.json() )
+                .then(cines => taulaCines(cines.data) )
+        }
+        function taulaCines(cines){
+            let nomCine = document.getElementById("nomCine")
+            let fotoCine = document.getElementById("fotoCines")
+            for (let i = 0; i < cines.length; i++) {
+               nomCine.innerHTML+=`<th>${cines[i].nom}</th>` 
+               fotoCine.innerHTML+=`<td> 
+                                    <img class="fCines" onclick="Cartellera(${cines[i].idCine})"  src="${cines[i].fotografia}" alt="cine"${i}>
+                                    </td>`
+            }
+        }
+        // Cartellera Cine
+        function Cartellera(numCine){
+            let query = `select m.link 
+                        from Multimedia m, propaganda pr, pelicula p, cartellera c,sales s 
+                        where s.idSala = c.idSala AND 
+                        c.idPelicula = p.idPelicula AND 
+                        p.idPelicula = pr.idPelicula AND 
+                        pr.idMultimedia= m.idMultimedia AND 
+                        m.prioritat = 0 AND s.idCine = ${numCine}` 
+            console.log(host+query)
+        }
+
+
+
+        // Ranking pelis
+        function ranking( idioma ){
+            let query = `SELECT ip.titol, p.puntuacio 
+                        from idioma_pelicula ip, pelicula p 
+                        where ip.idPelicula = p.idPelicula and 
+                        ip.idIdioma like "${idioma}" order by puntuacio desc`;
+            // console.log('http://localhost:3000/daw/ '+query)
+            fetch (host+query)
+                .then( response => response.json() )
+                .then( pelis => escriureRanking( pelis.data ) )
+        }
+        function escriureRanking( pelis ){
+            let text = document.getElementById("ranking")
+            for (let i = 0; i < pelis.length; i++) { text.innerHTML+=`<li>${pelis[i].titol}</li>` }
+        }
+
+
+        //FUncions javascript
+        ranking("ES")
+        tCines()
+
+    </script>
+</body>
+
+
+</html>

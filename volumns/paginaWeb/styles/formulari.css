@@ -1,0 +1,67 @@
+*{
+    box-sizing: border-box;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+
+.pagina{
+    grid-template-columns: 5% auto 5% ;
+    display:grid;
+    grid-template-areas: 
+    "cap  cap cap"
+    ". contenidor ."
+    "peu  peu peu";
+
+}
+
+
+legend{
+    font-size: 2rem;
+    margin-left: auto;
+    margin-right: auto;
+    color: #fff;
+}
+
+body{
+
+    background-color: #333;
+}
+
+.contenidor{
+    grid-area: principal;
+    display: flex;
+    justify-content:center;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+fieldset{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    width: 500px;
+    height: 550px;
+    margin:auto;
+    border: thin solid #fff;
+    border-radius: 50px;
+}
+
+input{
+    width: 200px;
+    padding: 5px;
+}
+
+.boton{
+    width: 65px;
+    padding: 8px;
+    border: 0px;
+    border-radius: 50px;
+}
+
+.boton:hover{
+    transition: 0.3s;
+    background-color: tomato;
+}

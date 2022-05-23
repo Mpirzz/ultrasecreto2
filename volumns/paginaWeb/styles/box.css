@@ -1,0 +1,37 @@
+body{
+    margin: 0px 0px 0px 0px;
+}
+
+.cap{
+    position:sticky;
+    top:0px;
+    z-index: 10;
+
+    background-color: black;
+}
+
+a,a:visited{
+    color: white;
+    text-decoration: none;
+}
+.capMenu > img{
+    width: 10em;
+}
+ .principal{
+    position: relative
+    text-align: center;
+    background-color: rgb(242, 242, 164);
+}
+
+.secundari{
+    background-color: rgb(233, 186, 31);
+}
+.peu {
+    background-color: black;
+    color: white;
+}
+
+
+
+
+/* Tarjetes  CIne funciona pero s'ha de posar aposta*/

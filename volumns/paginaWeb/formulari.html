@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/formulari.css">
+    <link rel="stylesheet" href="/styles/grid.css">
+    <link rel="stylesheet" href="/styles/box.css">
+    <link rel="stylesheet" href="/styles/flex.css">
+    <title>cine-formulari</title>
+</head>
+
+<body class="pagina"> 
+    <header class="cap">
+        <div class="capMenu ">
+            <!-- Posar imatge online -->
+            <img src="img/logo.jpg" alt="logo" class="logo">   
+            <nav class="menuNav">
+                <ul >
+                    <li> <a href="index.html">Inici</a></li>
+                    <li> <a href="">hola2</a></li>
+                    <li> <a href="">hola3</a></li>
+                    <li> <a href="">hola4</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- ---------------------------------------------------------------------------------->
+    <main class="contenidor">
+    <form class="formulari" action="get">
+        <fieldset>
+            <legend>Cine</legend>
+                <div>
+                    <label for="nom"></label>
+                    <input type="text" name="nom" placeholder="Nom" required>
+                </div>
+                <div>
+                    <label for="direccio"></label>
+                    <input type="text" name="direccio" placeholder="Direcció">
+                </div>
+                <div>
+                    <label for="tel"></label>
+                    <input type="tel" name="tel" placeholder="Telèfon">
+                </div>
+                <div>
+                    <label for="email"></label>
+                    <input type="email" name="email" placeholder="Email" required>
+                </div>
+                <div>
+                    <label for="ciutat"></label>
+                    <input type="text" name="ciutat" placeholder="Ciutat" required>
+                </div>
+                <div>
+                    <label for="maps"></label>
+                    <input type="text" name="maps" placeholder="Google maps" required>
+                </div>
+
+                <input class="boton" type="submit" value="Enviar">
+        </fieldset>
+    </form>
+    </main>
+<!-- ---------------------------------------------------------------------------------------------------------------------- -->
+    <footer class="peu">    
+     es un peu de pagina
+    </footer>
+</body>
+</html>

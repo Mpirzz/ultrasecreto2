@@ -1,0 +1,13 @@
+.capMenu{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.menuNav{
+    flex-grow: 1;
+}
+.menuNav > ul{
+ display: flex;
+ justify-content:space-around;
+}
+

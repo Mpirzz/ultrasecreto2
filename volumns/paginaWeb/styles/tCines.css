@@ -1,0 +1,23 @@
+
+
+caption{
+    font-size: 2rem;
+}
+.fCines{
+    width: 200px;
+}
+th,td{
+    font-size: 1.5rem;
+    border: 3px solid rgb(224, 124, 124);
+    border-style: solid;
+    border-radius: 5px;
+}
+.tCines{
+   
+    width: 50%;
+
+    margin-top: 60px;
+    /* color: #fff; */
+    margin-left: auto;
+    margin-right: auto;
+}

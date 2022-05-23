@@ -1,0 +1,58 @@
+version: '3'
+
+services:
+  
+  nodejs:
+    build:
+      context: ./serverNodeJS
+      dockerfile: Dockerfile
+    volumes: 
+      - ./serverNodeJS:/app
+    command: npm start
+    expose:
+      - 3000
+    ports:
+      - 3000:3000
+    #per fer fetch --> query = "select * from taula" 
+    # "httpd://localhost:3000/daw/"+encodeURIcomponent(query) 
+
+
+  
+  
+  apache2:
+    image: httpd:2.4
+    volumes:
+      - ./volumns/paginaWeb:/usr/local/apache2/htdocs
+    expose:
+      - 80
+    ports:
+      - 80:80
+    
+
+  mariadb:
+    image: mariadb:10.7
+    volumes:
+      - ./volumns/basedades:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=nofreMaties
+      - MYSQL_DATABASE=cines
+      - MYSQL_USER=nofreMaties
+      - MYSQL_PASSWORD=12345678
+    expose:
+      - 3307
+    ports:
+      - 3307:3306
+  
+  phpmyadmin:
+    image: phpmyadmin
+    expose:
+      - 8083
+    environment:
+      - PMA_HOST=mariadb
+    ports:
+      - 8083:80
+  
+
+
+
+  

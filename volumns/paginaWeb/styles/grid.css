@@ -1,0 +1,21 @@
+.pagina{
+    display:grid;
+    grid-template-areas: 
+    "cap cap cap cap"
+    "secundari principal principal principal"
+    "peu peu peu peu";
+
+}
+.cap{
+    grid-area: cap;
+}
+.principal{
+    grid-area: principal;
+}
+.secundari{
+    grid-area:secundari;
+}
+.peu{
+    grid-area:peu;
+}
+
