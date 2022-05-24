@@ -28,32 +28,32 @@
 
     <!-- ---------------------------------------------------------------------------------->
     <main class="contenidor">
-    <form class="formulari" action="get" onSubmit="return enviar( )">
+    <form class="formulari"  onSubmit="return enviar( )">
         <fieldset>
             <legend>Cine</legend>
                 <div>
                     <label for="nom"></label>
-                    <input type="text" name="nom" placeholder="Nom" required>
+                    <input type="text" name="nom" id="nom" placeholder="Nom" required>
                 </div>
                 <div>
                     <label for="direccio"></label>
-                    <input type="text" name="direccio" placeholder="Direcció">
+                    <input type="text" name="direccio" id="direccio" placeholder="Direcció">
                 </div>
                 <div>
                     <label for="tel"></label>
-                    <input type="tel" name="tel" placeholder="Telèfon">
+                    <input type="tel" name="tel" id="tel" placeholder="Telèfon">
                 </div>
                 <div>
                     <label for="email"></label>
-                    <input type="email" name="email" placeholder="Email" required>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
                 </div>
                 <div>
                     <label for="ciutat"></label>
-                    <input type="text" name="ciutat" placeholder="Ciutat" required>
+                    <input type="text" name="ciutat" id="ciutat" placeholder="Ciutat" required>
                 </div>
                 <div>
                     <label for="maps"></label>
-                    <input type="text" name="maps" placeholder="Google maps" required>
+                    <input type="text" name="maps" id="maps" placeholder="Google maps" required>
                 </div>
 
                 <input class="boton" type="submit" value="Enviar">
@@ -75,12 +75,31 @@
             </p>
     </footer>
 <!-- ---------------------------------------------------------------------------------------------------------------------- -->
-
+   
     <script>
+        let host= `http://localhost:3000/daw/`
+        
         function enviar( ){
             
-            return false
+            let nom = document.getElementById("nom").value
+            let direccio  = document.getElementById("direccio").value
+            let nomCiutat = document.getElementById("ciutat").value
+            let tel = document.getElementById("tel").value
+            let email = document.getElementById("email").value
+            let maps = document.getElementById("maps").value
 
+            let queryCiutats = `select idCiutat,nom from ciutat`
+            fetch(host+queryCiutats)
+                .then(response => response.json())
+                .then(ciutats => trobarIdCiutat(nomCiutat,ciutats.data))
+            let insertCine = `INSERT INTO Cine (nom,direccio,idCiutat,telefon,email,gMaps)
+        }
+        function trobarIdCiutat(nomCiutat,ciutats){
+            for (let i = 0; i < ciutats.length; i++) {
+                if( nomCiutat == ciutats[i].nomCiutat) return idCiutat
+            }
+            let insertCiutat = `INSERT INTO Ciutat (nom) values ('${nomCiutat}')`
+            return ciutats[ciutats.length-1].idCiutat+1
         }
     </script>
 </body>
