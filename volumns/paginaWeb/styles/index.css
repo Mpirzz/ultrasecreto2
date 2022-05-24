@@ -1,0 +1,63 @@
+.pagina{
+    display:grid;
+    grid-template-areas: 
+    "cap cap"
+    "secundari principal"
+    "peu peu ";
+
+}
+body{
+    margin: 0px;
+}
+/* Pagina final i secundaria */
+ .principal{
+    grid-area: principal;
+    position: relative;
+    text-align: center;
+    background-color: rgb(242, 242, 164);
+}
+
+.secundari{
+    grid-area:secundari;
+    background-color: rgb(233, 186, 31);
+}
+
+/* Tarjetes cine */
+caption{
+    font-size: 2rem;
+}
+.fCines{
+    width: 200px;
+}
+th,td{
+    font-size: 1.5rem;
+    border: 3px solid rgb(224, 124, 124);
+    border-style: solid;
+    border-radius: 5px;
+}
+.tCines{
+   width: 90%;
+    /* color: #fff; */
+    margin-left: auto;
+    margin-right: auto;
+}
+#nomCine{
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+/* Cartellera */
+#Cartellera{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 10%;
+
+}
+.cartell{
+    width: 15rem;
+    margin-top:5%
+}
+
+
+

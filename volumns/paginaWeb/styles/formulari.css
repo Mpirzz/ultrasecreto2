@@ -28,7 +28,7 @@ body{
 }
 
 .contenidor{
-    grid-area: principal;
+    grid-area: contenidor;
     display: flex;
     justify-content:center;
     width: 80%;

@@ -6,9 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/styles/formulari.css">
-    <link rel="stylesheet" href="/styles/grid.css">
-    <link rel="stylesheet" href="/styles/box.css">
-    <link rel="stylesheet" href="/styles/flex.css">
+    <link rel="stylesheet" href="/styles/peuNavegador.css">
     <title>cine-formulari</title>
 </head>
 
@@ -30,7 +28,7 @@
 
     <!-- ---------------------------------------------------------------------------------->
     <main class="contenidor">
-    <form class="formulari" action="get">
+    <form class="formulari" action="get" onSubmit="return enviar( )">
         <fieldset>
             <legend>Cine</legend>
                 <div>
@@ -64,7 +62,26 @@
     </main>
 <!-- ---------------------------------------------------------------------------------------------------------------------- -->
     <footer class="peu">    
-     es un peu de pagina
+        <h1 class="text">Cinema</h1>
+        <div class="images">
+            <img src="/img/icons8-twitter.svg" alt="img1">
+            <a href="https://twitter.com/" class="media" target="_blank">@twitterCinema</a>
+            <img src="/img/icons8-youtube.svg" alt="img2">
+            <a href="https://www.youtube.com/" class="media" target="_blank">@youtubeCinema</a>
+        </div>
+        <div class="line"></div>
+            <p class="copyright">
+                © 2016 Societat Cinema SL
+            </p>
     </footer>
+<!-- ---------------------------------------------------------------------------------------------------------------------- -->
+
+    <script>
+        function enviar( ){
+            
+            return false
+
+        }
+    </script>
 </body>
 </html>

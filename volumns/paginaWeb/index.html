@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles/grid.css">
-    <link rel="stylesheet" href="/styles/box.css">
-    <link rel="stylesheet" href="/styles/flex.css">
-    <link rel="stylesheet" href="/styles/tCines.css">
+    <link rel="stylesheet" href="/styles/index.css">
+    <link rel="stylesheet" href="/styles/peuNavegador.css">
     <title>Document</title>
 </head>
 <body class="pagina">
@@ -36,8 +34,13 @@
                 <thead> <tr id="nomCine"></tr> </thead>
                 <!-- <tbody> <tr id="fotoCines"> </tr> </tbody> -->
             </table>
-            <div id = "Cartellera"> </div>
         </section>
+        <section id="cartelleraCine">
+            <!-- Script nom del cine -->
+            
+
+        </section>
+        
     </main>
     <!-- ---------------------------------------------------------------------------------------------------------------------- -->
     <aside class="secundari">
@@ -47,7 +50,17 @@
     <!-- ---------------------------------------------------------------------------------------------------------------------- -->
 
     <footer class="peu">    
-        es un peu de pagina
+        <h1 class="text">Cinema</h1>
+        <div class="images">
+            <img src="/img/icons8-twitter.svg" alt="img1">
+            <a href="https://twitter.com/" class="media" target="_blank">@twitterCinema</a>
+            <img src="/img/icons8-youtube.svg" alt="img2">
+            <a href="https://www.youtube.com/" class="media" target="_blank">@youtubeCinema</a>
+        </div>
+        <div class="line"></div>
+            <p class="copyright">
+                © 2016 Societat Cinema SL
+            </p>
         
     </footer>
 
@@ -66,15 +79,14 @@
             for (let i = 0; i < cines.length; i++) {
                nomCine.innerHTML+=`<th>
                 <div>${cines[i].nom}</div>
-                <img class="fCines" onclick="Cartellera(${cines[i].idCine})"  src="${cines[i].fotografia}" alt="cine"${i}> 
+                <img class="fCines" onclick="Cartellera(${cines[i].idCine},'${cines[i].nom}')" src="${cines[i].fotografia}" alt="cine"${i}> 
                 </th>` 
-            //    fotoCine.innerHTML+=`<td> 
-                                   
-            //                         </td>`
              }
         }
         // Cartellera Cine
-        function Cartellera(numCine){
+        function Cartellera(numCine,nomCine){
+            let cartelleraCine = document.getElementById("cartelleraCine")
+            cartelleraCine.innerHTML = `<h1> Cine ${nomCine} </h1> <div id = "Cartellera"> </div>`
             let query = `select m.link 
                         from Multimedia m, propaganda pr, pelicula p, cartellera c,sales s 
                         where s.idSala = c.idSala AND 
@@ -89,9 +101,8 @@
         }
         function crearCartellera( cartell ){
             let cartellera = document.getElementById("Cartellera")
-            cartellera.innerHTML = "";
             for (let i = 0; i < cartell.length; i++) {
-               cartellera.innerHTML+=`<div class="cartell"> <img src="${cartell[i].link}" alt="cartell"${i}> </div>` 
+               cartellera.innerHTML+=`<img src="${cartell[i].link}" alt="cartell"${i} class="cartell">` 
             }
         }
 
@@ -116,7 +127,6 @@
         //FUncions javascript
         ranking("ES")
         tCines()
-
     </script>
 </body>
 
