@@ -44,7 +44,7 @@ services:
       - 3307:3306
   
   phpmyadmin:
-    image: phpmyadmin
+    image: phpmyadmin:5.2
     expose:
       - 8083
     environment:

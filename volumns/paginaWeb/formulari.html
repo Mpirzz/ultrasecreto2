@@ -49,7 +49,9 @@
                 </div>
                 <div>
                     <label for="ciutat"></label>
-                    <input type="text" name="ciutat" id="ciutat" placeholder="Ciutat" required>
+                    <select name="ciutat" id="ciutat">
+
+                    </select>
                 </div>
                 <div>
                     <label for="maps"></label>
@@ -78,29 +80,33 @@
    
     <script>
         let host= `http://localhost:3000/daw/`
-        
+
+        function generarCiutats(){
+            let query = `Select * from Ciutat`
+            fetch(host+query)
+                .then( response => response.json( ) )
+                .then( ciutats => selectCiutats( ciutats.data ))
+        }
+        function selectCiutats( ciutats ){
+            let text = document.getElementById("ciutat")
+            for (let i = 0; i < ciutats.length; i++) {
+                 text.innerHTML+=`<option value="${ciutats[i].idCiutat}">${ciutats[i].nom}</option>` 
+            }
+        }
         function enviar( ){
-            
             let nom = document.getElementById("nom").value
             let direccio  = document.getElementById("direccio").value
-            let nomCiutat = document.getElementById("ciutat").value
             let tel = document.getElementById("tel").value
             let email = document.getElementById("email").value
             let maps = document.getElementById("maps").value
+            let idCiutat = document.getElementById("ciutat").value
+            let insert =  `INSERT INTO Cine (nom,direccio,idCiutat,telefon,email,gMaps)
+                            values ('${nom}','${direccio}',${idCiutat},'${tel}','${email}','${maps}')`
+            fetch( host+insert )
+        }
+        generarCiutats()
 
-            let queryCiutats = `select idCiutat,nom from ciutat`
-            fetch(host+queryCiutats)
-                .then(response => response.json())
-                .then(ciutats => trobarIdCiutat(nomCiutat,ciutats.data))
-            let insertCine = `INSERT INTO Cine (nom,direccio,idCiutat,telefon,email,gMaps)
-        }
-        function trobarIdCiutat(nomCiutat,ciutats){
-            for (let i = 0; i < ciutats.length; i++) {
-                if( nomCiutat == ciutats[i].nomCiutat) return idCiutat
-            }
-            let insertCiutat = `INSERT INTO Ciutat (nom) values ('${nomCiutat}')`
-            return ciutats[ciutats.length-1].idCiutat+1
-        }
+
     </script>
 </body>
 </html>

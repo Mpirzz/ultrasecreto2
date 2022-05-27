@@ -68,7 +68,7 @@
         // Taula cine
         let host= `http://localhost:3000/daw/`
         function tCines(){
-            let query = `select idCine,nom,fotografia from Cine `
+            let query = `select idCine,nom,fotografia from Cine order by nom `
             fetch( host+query )
                 .then(response => response.json() )
                 .then(cines => taulaCines(cines.data) )
